@@ -4,10 +4,10 @@ using ShopTARge23.Core.Dto;
 using ShopTARge23.Core.ServiceInterface;
 using ShopTARge23.Data;
 
-
+// Kindergarten
 namespace ShopTARge23.ApplicationServices.Services
 {
-    public class RealEstateServices : IRealEstateServices
+    public class RealEstateServices1 : IRealEstateServices
     {
         private readonly ShopTARge23Context _context;
         private readonly IFileServices _fileServices;
