@@ -7,7 +7,7 @@ using ShopTARge23.Data;
 // Kindergarten
 namespace ShopTARge23.ApplicationServices.Services
 {
-    public class RealEstateServices1 : IRealEstateServices
+    public class RealEstateServices : IRealEstateServices
     {
         private readonly ShopTARge23Context _context;
         private readonly IFileServices _fileServices;
