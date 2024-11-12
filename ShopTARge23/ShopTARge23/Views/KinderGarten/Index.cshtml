@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ShopTARge23.Models.KinderGarten.KinderGartenIndexViewModel>
+
+@{
+    ViewData["Title"] = "KinderGarten List";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Create New Kindergarten</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Group Name</th>
+            <th>Children Count</th>
+            <th>Kindergarten Name</th>
+            <th>Teacher</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+
+        {
+            <tr>
+                <td>@item.GroupName</td>
+                <td>@item.ChildrenCount</td>
+                <td>@item.KindergartenName</td>
+                <td>@item.Teacher</td>
+                <td>
+                    <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-info btn-sm">Details</a>
+                    <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

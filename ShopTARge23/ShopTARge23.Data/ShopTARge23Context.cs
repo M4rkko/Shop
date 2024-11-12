@@ -7,13 +7,13 @@ namespace ShopTARge23.Data
 {
     public class ShopTARge23Context : DbContext
     {
-        public ShopTARge23Context(DbContextOptions<ShopTARge23Context> options) 
-        : base(options) { }
+        public ShopTARge23Context(DbContextOptions<ShopTARge23Context> options)
+            : base(options) { }
 
         public DbSet<Spaceship> Spaceships { get; set; }
         public DbSet<FileToApi> FileToApis { get; set; }
         public DbSet<RealEstate> RealEstates { get; set; }
+        public DbSet<KinderGarten> KinderGarten { get; set; }
         public DbSet<FileToDatabase> FileToDatabases { get; set; }
-        public object KinderGarten { get; set; }
     }
 }
