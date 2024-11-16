@@ -1,13 +1,14 @@
 ﻿namespace ShopTARge23.Core.Domain
 {
-    public class KinderGarten
+    public class Kindergarten
     {
-        public Guid Id { get; set; }
-        public string GroupName { get; set; }
-        public int ChildrenCount { get; set; }
-        public string KindergartenName { get; set; }
-        public string Teacher { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public Guid? Id { get; set; }
+        public double? Size { get; set; }
+        public string? Location { get; set; }
+        public int? RoomNumber { get; set; }
+        public string? BuildingType { get; set; }
+
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? ModifiedAt { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using ShopTARge23.Data;
 // Kindergarten
 namespace ShopTARge23.ApplicationServices.Services
 {
-    public class RealEstateServices : IRealEstateServices
+    public class RealEstateServices : IKindergartenServices
     {
         private readonly ShopTARge23Context _context;
         private readonly IFileServices _fileServices;
@@ -22,9 +22,9 @@ namespace ShopTARge23.ApplicationServices.Services
             _fileServices = fileServices;
         }
 
-        public async Task<RealEstate> Create(RealEstateDto dto)
+        public async Task<Kindergarten> Create(KindergartenDto dto)
         {
-            RealEstate realEstate = new();
+            Kindergarten realEstate = new();
 
             realEstate.Id = Guid.NewGuid();
             realEstate.Size = dto.Size;
@@ -45,7 +45,7 @@ namespace ShopTARge23.ApplicationServices.Services
             return realEstate;
         }
 
-        public async Task<RealEstate> GetAsync(Guid id)
+        public async Task<Kindergarten> GetAsync(Guid id)
         {
             var result = await _context.RealEstates
                 .FirstOrDefaultAsync(x => x.Id == id);
@@ -53,9 +53,9 @@ namespace ShopTARge23.ApplicationServices.Services
             return result;
         }
 
-        public async Task<RealEstate> Update(RealEstateDto dto)
+        public async Task<Kindergarten> Update(KindergartenDto dto)
         {
-            RealEstate domain = new();
+            Kindergarten domain = new();
 
             domain.Id = dto.Id;
             domain.Size = dto.Size;
@@ -76,7 +76,7 @@ namespace ShopTARge23.ApplicationServices.Services
             return domain;
         }
 
-        public async Task<RealEstate> Delete(Guid id)
+        public async Task<Kindergarten> Delete(Guid id)
         {
             var result = await _context.RealEstates
                 .FirstOrDefaultAsync(x => x.Id == id);

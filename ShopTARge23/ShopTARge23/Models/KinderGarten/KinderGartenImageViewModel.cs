@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using ShopTARge23.Models.KinderGarten;
-
-namespace ShopTARge23.Models.KinderGarten
+﻿namespace ShopTARge23.Models.RealEstates
 {
-    public class KinderGartenImageViewModel
+    public class KindergartenImageViewModel
     {
         public Guid ImageId { get; set; }
-        public Guid KinderGartenId { get; set; }
-        public byte[] ImageData { get; set; } 
-        public string ImageTitle { get; set; }
-        public string ImageBase64 { get; set; }
-
-        public DateTime CreatedAt { get; set; }
-        public DateTime? ModifiedAt { get; set; }
+        public string? ImageTitle { get; set; }
+        public byte[]? ImageData { get; set; }
+        public string? Image {  get; set; }
+        public Guid? RealEstateId { get; set; }
     }
 }

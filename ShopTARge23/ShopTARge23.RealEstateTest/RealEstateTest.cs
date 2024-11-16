@@ -12,7 +12,7 @@ namespace ShopTARge23.RealEstateTest
         public async Task ShouldNot_AddEmptyRealEstate_WhenReturnResult()
         {
             //Arrange
-            RealEstateDto dto = new();
+            KindergartenDto dto = new();
 
             dto.Size = 100;
             dto.Location = "asd";
@@ -22,7 +22,7 @@ namespace ShopTARge23.RealEstateTest
             dto.ModifiedAt = DateTime.Now;
 
             //Act
-            var result = await Svc<IRealEstateServices>().Create(dto);
+            var result = await Svc<IKindergartenServices>().Create(dto);
 
             //Assert
             Assert.NotNull(result);
@@ -37,7 +37,7 @@ namespace ShopTARge23.RealEstateTest
             Guid guid = Guid.Parse("8edd7b5d-822b-483d-ab81-048a638a2b31");
 
             //Act
-            await Svc<IRealEstateServices>().GetAsync(guid);
+            await Svc<IKindergartenServices>().GetAsync(guid);
 
             //Assert
             Assert.NotEqual(wrongGuid, guid);
@@ -51,7 +51,7 @@ namespace ShopTARge23.RealEstateTest
             Guid guid = Guid.Parse("8edd7b5d-822b-483d-ab81-048a638a2b31");
 
             //Act
-            await Svc<IRealEstateServices>().GetAsync(guid);
+            await Svc<IKindergartenServices>().GetAsync(guid);
 
             //Assert
             Assert.Equal(databaseGuid, guid);
@@ -60,10 +60,10 @@ namespace ShopTARge23.RealEstateTest
         [Fact]
         public async Task Should_DeleteByIdRealEstate_WhenDeleteRealEstate()
         {
-            RealEstateDto realEstate = MockRealEstateData();
+            KindergartenDto realEstate = MockRealEstateData();
 
-            var addRealEstate = await Svc<IRealEstateServices>().Create(realEstate);
-            var result = await Svc<IRealEstateServices>().Delete((Guid)addRealEstate.Id);
+            var addRealEstate = await Svc<IKindergartenServices>().Create(realEstate);
+            var result = await Svc<IKindergartenServices>().Delete((Guid)addRealEstate.Id);
 
             Assert.Equal(result, addRealEstate);
         }
@@ -71,12 +71,12 @@ namespace ShopTARge23.RealEstateTest
         [Fact]
         public async Task ShouldNot_DeleteByIdRealEstate_WhenDidNotDeleteRealEstate()
         {
-            RealEstateDto realEstate = MockRealEstateData();
+            KindergartenDto realEstate = MockRealEstateData();
 
-            var realEstate1 = await Svc<IRealEstateServices>().Create(realEstate);
-            var realEstate2 = await Svc<IRealEstateServices>().Create(realEstate);
+            var realEstate1 = await Svc<IKindergartenServices>().Create(realEstate);
+            var realEstate2 = await Svc<IKindergartenServices>().Create(realEstate);
 
-            var result = await Svc<IRealEstateServices>().Delete((Guid)realEstate2.Id);
+            var result = await Svc<IKindergartenServices>().Delete((Guid)realEstate2.Id);
 
             Assert.NotEqual(result.Id, realEstate1.Id);
         }
@@ -86,9 +86,9 @@ namespace ShopTARge23.RealEstateTest
         {
             var guid = new Guid("8edd7b5d-822b-483d-ab81-048a638a2b31");
 
-            RealEstateDto dto = MockRealEstateData();
+            KindergartenDto dto = MockRealEstateData();
 
-            RealEstate domain = new();
+            Kindergarten domain = new();
 
             domain.Id = Guid.Parse("8edd7b5d-822b-483d-ab81-048a638a2b31");
             domain.Size = 99;
@@ -98,7 +98,7 @@ namespace ShopTARge23.RealEstateTest
             domain.CreatedAt = DateTime.UtcNow;
             domain.ModifiedAt = DateTime.UtcNow;
 
-            await Svc<IRealEstateServices>().Update(dto);
+            await Svc<IKindergartenServices>().Update(dto);
 
             Assert.Equal(guid, domain.Id);
             Assert.DoesNotMatch(dto.Location, domain.Location);
@@ -109,11 +109,11 @@ namespace ShopTARge23.RealEstateTest
         [Fact]
         public async Task Should_UpdateRealEstate_WhenUpdatedataVersion2()
         {
-            RealEstateDto dto = MockRealEstateData();
-            var createRealEstate = await Svc<IRealEstateServices>().Create(dto);
+            KindergartenDto dto = MockRealEstateData();
+            var createRealEstate = await Svc<IKindergartenServices>().Create(dto);
 
-            RealEstateDto update = MockUpdateRealEstateData();
-            var result = await Svc<IRealEstateServices>().Update(update);
+            KindergartenDto update = MockUpdateRealEstateData();
+            var result = await Svc<IKindergartenServices>().Update(update);
 
             Assert.DoesNotMatch(result.Location, createRealEstate.Location);
             Assert.NotEqual(result.ModifiedAt, createRealEstate.ModifiedAt);
@@ -122,11 +122,11 @@ namespace ShopTARge23.RealEstateTest
         [Fact]
         public async Task ShouldNot_UpdateRealEstate_WhenDidNotUpdateData()
         {
-            RealEstateDto dto = MockRealEstateData();
-            var createRealEstate = await Svc<IRealEstateServices>().Create(dto);
+            KindergartenDto dto = MockRealEstateData();
+            var createRealEstate = await Svc<IKindergartenServices>().Create(dto);
 
-            RealEstateDto nullUpdate = MockNullRealEstateData();
-            var result = await Svc<IRealEstateServices>().Update(nullUpdate);
+            KindergartenDto nullUpdate = MockNullRealEstateData();
+            var result = await Svc<IKindergartenServices>().Update(nullUpdate);
 
             Assert.NotEqual(createRealEstate.Id, result.Id);
         }
@@ -134,7 +134,7 @@ namespace ShopTARge23.RealEstateTest
         [Fact]
         public async Task Should_AddRealEstate_WhenInvalidData()
         {
-            RealEstateDto dto = new()
+            KindergartenDto dto = new()
             {
                 Location = "",
                 Size = -10,
@@ -144,7 +144,7 @@ namespace ShopTARge23.RealEstateTest
                 ModifiedAt = DateTime.Now,
             };
 
-            var result = await Svc<IRealEstateServices>().Create(dto);
+            var result = await Svc<IKindergartenServices>().Create(dto);
             Assert.NotNull(result);
         }
 
@@ -152,7 +152,7 @@ namespace ShopTARge23.RealEstateTest
         public async Task ShouldNot_CreateRealEstate_WithFutureDates()
         {
             // Arrange
-            RealEstateDto futureDatedRealEstate = new()
+            KindergartenDto futureDatedRealEstate = new()
             {
                 Size = 150,
                 Location = "kdkd",
@@ -163,7 +163,7 @@ namespace ShopTARge23.RealEstateTest
             };
 
             // Act
-            var result = await Svc<IRealEstateServices>().Create(futureDatedRealEstate);
+            var result = await Svc<IKindergartenServices>().Create(futureDatedRealEstate);
             // Assert
             Assert.NotNull(result);
         }
@@ -172,7 +172,7 @@ namespace ShopTARge23.RealEstateTest
         public async Task ShouldNot_UpdateRealEstate_WhenUpdateAlreadyHappening()
         {
             var dto = MockRealEstateDataVersion2();
-            var s = Svc<IRealEstateServices>();
+            var s = Svc<IKindergartenServices>();
 
             //double originalSize = (double)dto.Size;
             //int originalRoomNo = (int)dto.RoomNumber;
@@ -193,9 +193,9 @@ namespace ShopTARge23.RealEstateTest
             });
         }
 
-        private RealEstateDto MockRealEstateData()
+        private KindergartenDto MockRealEstateData()
         {
-            RealEstateDto realEstate = new()
+            KindergartenDto realEstate = new()
             {
                 Size = 100,
                 Location = "asd",
@@ -208,9 +208,9 @@ namespace ShopTARge23.RealEstateTest
             return realEstate;
         }
 
-        private RealEstateDto MockUpdateRealEstateData()
+        private KindergartenDto MockUpdateRealEstateData()
         {
-            RealEstateDto realEstate = new()
+            KindergartenDto realEstate = new()
             {
                 Size = 44,
                 Location = "vbn",
@@ -223,9 +223,9 @@ namespace ShopTARge23.RealEstateTest
             return realEstate;
         }
 
-        private RealEstateDto MockNullRealEstateData()
+        private KindergartenDto MockNullRealEstateData()
         {
-            RealEstateDto realEstate = new()
+            KindergartenDto realEstate = new()
             {
                 Id = null,
                 Size = 44,
@@ -239,7 +239,7 @@ namespace ShopTARge23.RealEstateTest
             return realEstate;
         }
 
-        private RealEstateDto MockRealEstateDataVersion2()
+        private KindergartenDto MockRealEstateDataVersion2()
         {
             return new()
             {

@@ -1,24 +1,17 @@
-﻿using System;
-
-namespace ShopTARge23.Models.KinderGarten
+﻿namespace ShopTARge23.Models.RealEstates
 {
-    public class KinderGartenDeleteViewModel
+    public class RealEstatesDeleteViewModel
     {
-        public Guid Id { get; set; }
-        public string GroupName { get; set; }
-        public int ChildrenCount { get; set; }
-        public string KindergartenName { get; set; }
-        public string Teacher { get; set; }
-        public List<KinderGartenImageViewModel> Image { get; set; }
-            = new List<KinderGartenImageViewModel>();
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-    }
-  //  public class KinderGartenImageViewModel
-    //{
-      //  public Guid Id { get; set; }
-        //public string ImageTitle { get; set; }
-        //public byte[] ImageData { get; set; }
-    //}
+        public Guid? Id { get; set; }
+        public double? Size { get; set; }
+        public string? Location { get; set; }
+        public int? RoomNumber { get; set; }
+        public string? BuildingType { get; set; }
 
+        public List<KindergartenImageViewModel> Image { get; set; }
+            = new List<KindergartenImageViewModel>();
+
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? ModifiedAt { get; set; }
+    }
 }

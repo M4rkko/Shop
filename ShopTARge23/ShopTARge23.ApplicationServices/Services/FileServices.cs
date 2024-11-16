@@ -97,7 +97,7 @@ namespace ShopTARge23.ApplicationServices.Services
             return null;
         }
 
-        public void UploadFilesToDatabase(RealEstateDto dto, RealEstate domain)
+        public void UploadFilesToDatabase(RealEstateDto dto, Kindergarten domain)
         {
             if (dto.Files != null && dto.Files.Count > 0)
             {
